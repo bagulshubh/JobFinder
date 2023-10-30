@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {CgProfile} from 'react-icons/cg'
 import { logout } from '../../services/auth'
@@ -11,6 +11,8 @@ const Navbar = () => {
 
   const {token} = useSelector( (state)=> (state.auth) )
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   return (
     <div className='nav-con'>
       
@@ -31,7 +33,7 @@ const Navbar = () => {
         token ? (
           <div className='auth-con'>
             <Link to='/profile' className='profile-nav'><CgProfile></CgProfile></Link>
-            <div className='auth-btn' onClick={ ()=>{dispatch(logout())} }>Log Out</div>
+            <div className='auth-btn' onClick={ ()=>{dispatch(logout(navigate))} }>Log Out</div>
 
           </div>
         ):(

@@ -70,7 +70,9 @@ exports.getUserDetails = async(req,res)=>{
             })
         }
 
-        const userDetails = await User.findById(id);
+        const userDetails = await User.findById(userId)
+        .populate("additionalInfo")
+        .exec();
 
         return res.status(200).json({
             success:"True",

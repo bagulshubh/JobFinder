@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { sendotp, signup } from '../../../services/auth';
+import { useDispatch } from 'react-redux';
 
 const Signup = () => {
 
@@ -14,7 +16,7 @@ const Signup = () => {
     });
 
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const [submitFlag,setsubmitFlag] = useState(false);
 
     const {fname,lname,email,password,confirmpassword,otp} = user;
@@ -31,47 +33,13 @@ const Signup = () => {
     
     const  subminHandler = async()=>{
         
-        const  url = 'http://localhost:5000/api/v1/auth/sendotp'
-
-        const res = await fetch (url,
-            {
-              method:'POST',
-              headers: {
-                'Content-type': 'application/json'
-              },
-              mode:'cors',
-              body:JSON.stringify({email:email})
-            }
-            )
-      
-        const output =await res.json();
-        console.log(output);
-        console.log(user);
-        
+        sendotp(user.email);
         setsubmitFlag(true);
 
     }
 
     const singupHandler = async()=>{
-        const  url = 'http://localhost:5000/api/v1/auth/signup'
-
-        const res = await fetch (url,
-            {
-              method:'POST',
-              headers: {
-                'Content-type': 'application/json'
-              },
-              mode:'cors',
-              body:JSON.stringify(user)
-            }
-            )
-      
-        const output =await res.json();
-        console.log(output);
-        
-        setsubmitFlag(false);
-        navigate('/login');
-
+        dispatch(signup(user,navigate));
     }
 
     return (

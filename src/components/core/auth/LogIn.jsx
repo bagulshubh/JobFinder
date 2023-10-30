@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { setToken } from '../../../slices/authSlice'
 import {useSelector   } from 'react-redux/es/hooks/useSelector'
 import { useDispatch } from 'react-redux'
+import { login } from '../../../services/auth'
 
 const LogIn = () => {
 
@@ -25,26 +26,7 @@ const LogIn = () => {
   }
 
   const submitHandler = async()=>{
-    const url = 'http://localhost:5000/api/v1/auth/login'
-
-    const res = await fetch (url,
-      {
-        method:'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        mode:'cors',
-        body:JSON.stringify(user)
-      }
-      )
-
-  const output =await res.json();
-  console.log(output);
-  
-  dispatch(setToken(output.token));
-  
-  navigate('/');
-
+    dispatch(login(user,navigate));
   }
 
   return (
