@@ -19,14 +19,14 @@ exports.signUp = async(req,res)=>{
             lname,
             email,
             password,
-            confirmPassword,
+            confirmpassword,
             role,
             otp,
             tags,
         } = req.body;
 
         //simple validation
-        if(!fname || !lname || !email || !password  || !confirmPassword || !role || !otp ){
+        if(!fname || !lname || !email || !password  || !confirmpassword || !role || !otp ){
             return res.status(402).json({
                 success:false,
                 message:"All fileds are required",
@@ -34,7 +34,7 @@ exports.signUp = async(req,res)=>{
         }
 
         //chceking   passwords
-        if(password!==confirmPassword){
+        if(password!==confirmpassword){
             return res.status(402).json({
                 success:false,
                 message:"Confirm  password  does not   match",

@@ -30,7 +30,7 @@ async function sendVerificationEmail(email, otp) {
 			"Verification Email",
 			`<h2>Your OTP is ${otp}</h2>`
 		);
-		console.log("Email sent successfully: ", mailResponse.response);
+		// console.log("Email sent successfully: ", //mailResponse.response);
 	} catch (error) {
 		console.log("Error occurred while sending email: ", error);
 		throw error;
