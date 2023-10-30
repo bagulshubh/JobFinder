@@ -4,6 +4,7 @@ import { setToken } from '../../../slices/authSlice'
 import {useSelector   } from 'react-redux/es/hooks/useSelector'
 import { useDispatch } from 'react-redux'
 import { login } from '../../../services/auth'
+import loginlogo from '../../../assets/login-logo.png'
 
 const LogIn = () => {
 
@@ -33,14 +34,22 @@ const LogIn = () => {
     <div className='login-con'>
 
       <div className='login-left-div'>
-        
-          <label>Email</label>
-          <input type='email' placeholder='Enter Your Email' onChange={changeHandler} name='email' value={email}></input>
 
-          <label>Password</label>
-          <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
-        
-          <button onClick={submitHandler}>Submit</button>
+          <img src={loginlogo} className='login-logo'></img>
+
+          <div className='login-heading'>Login</div>
+
+          <div className='login-email'>
+            <label>Email</label>
+            <input type='email' placeholder='Enter Your Email' onChange={changeHandler} name='email' value={email}></input>
+          </div>
+          
+          <div className='login-email'>
+            <label>Password</label>
+            <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
+          </div>
+
+          <button onClick={submitHandler} className='submit-btn'>Submit</button>
       </div>
 
     </div>

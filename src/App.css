@@ -1,6 +1,6 @@
 
 .app{
-  max-width: 1350px;
+  max-width: 85%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -110,7 +110,156 @@
   justify-content: center;
   color: black;
 }
-
-
-
-
+.login-con{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:3rem;
+  position: relative;
+}
+.login-left-div{
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  flex-direction: column;
+  padding: 2rem;
+  width: auto;
+  justify-content: center;
+  gap: 2rem;
+  width: 50%;
+  align-items: center;
+}
+.login-heading{
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.login-email{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1.5rem;
+  width: 60%;
+}
+.login-email input{
+  all: unset;
+  padding: 0.4rem;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: solid rgb(82, 199, 223) 2px;
+  color: rgb(18, 17, 17);
+  background-color: rgb(225, 239, 248);
+}
+.login-email input::placeholder{
+  color: rgb(18, 17, 17);
+  opacity: 0.8;
+}
+.submit-btn{
+  all: unset;
+  padding: 0.4rem 0.7rem;
+  background-color: rgb(78, 56, 243);
+  color: white;
+  font-size: 1.3rem;
+  border: 1px solid rgb(39, 39, 71);
+  border-radius: 5px 7px 5px 7px;
+  cursor: pointer;
+}
+.login-logo{
+  position: absolute;
+  width: 5%;
+  top:1.6rem;
+  z-index: 2;
+}
+.signup-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:2rem;
+  position: relative;
+}
+.signup-con{
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  flex-direction: column;
+  padding: 2rem;
+  width: auto;
+  justify-content: center;
+  gap: 2rem;
+  width: 65%;
+  align-items:center;
+}
+.signup-name{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.signup-name label{
+  font-size: 1.2rem;
+}
+.signup-name input{
+  all: unset;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: solid rgb(82, 199, 223) 2px;
+  color: rgb(18, 17, 17);
+  background-color: rgb(225, 239, 248);
+}
+.sign-email{
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+  align-items: center;
+}
+.sign-email label{
+  font-size: 1.2rem;
+}
+.sign-email input{
+  all: unset;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: solid rgb(82, 199, 223) 2px;
+  color: rgb(18, 17, 17);
+  background-color: rgb(225, 239, 248);
+  width: 60%;
+}
+.radio-con{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.radio-con div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+  background-color: rgb(149, 158, 239);
+  padding: 0.5rem 0.7rem;
+  border-radius:5px;
+  color: rgb(29, 1, 1);
+}
+.otp-con{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.otp-con label{
+  align-self: flex-start;
+  font-size: 1.4rem;
+}
+.otp-con input{
+  all: unset;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: solid rgb(82, 199, 223) 2px;
+  color: rgb(18, 17, 17);
+  background-color: rgb(225, 239, 248);
+}

@@ -15,6 +15,7 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
+
     if (localStorage.getItem("token")) {
       const token = JSON.parse(localStorage.getItem("token"))
       console.log(token);
