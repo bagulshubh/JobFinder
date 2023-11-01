@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { sendotp, signup } from '../../../services/auth';
 import { useDispatch } from 'react-redux';
+import signuplogo from '../../../assets/signuplogo.png'
 
 const Signup = () => {
 
@@ -58,6 +59,8 @@ const Signup = () => {
             </div>) : (
  
             <div className='signup-con'>
+                    <img src={signuplogo} className='signup-logo'></img>
+ 
                     <p className='login-heading'>Sign Up</p>
 
                     <div className='signup-name'>

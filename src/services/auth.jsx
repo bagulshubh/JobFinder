@@ -2,6 +2,7 @@ import { setUserDetails } from "../slices/profileSlice"
 import { setToken } from "../slices/authSlice"
 import { getUserDetails } from "./profile"
 
+
 export const sendotp = async(email)=>{
     const  url = 'http://localhost:5000/api/v1/auth/sendotp'
 
@@ -45,6 +46,7 @@ export const signup = (user,navigate)=>{
 
 export function login(user,navigate){
     return async (dispatch)=>{
+        
         const url = 'http://localhost:5000/api/v1/auth/login'
 
         const res = await fetch (url,

@@ -67,7 +67,7 @@ exports.isSeeker = async(req,res,next)=>{
 exports.isEmployeer= async(req,res,next)=>{
     try{
 
-        if(req.user.role!=="Employeer"){
+        if(req.user.role!=="Employer"){
             return res.status(401).json({
                 success:false,
                 message:"This is a protected route for employeer only"

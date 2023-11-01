@@ -21,9 +21,9 @@ const  applicationSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    conditions:{
+    conditions:[{
         type:String,
-    },
+    }],
     candidates:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
@@ -45,10 +45,10 @@ const  applicationSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    catagory:{
+    catagory:[{
         type:String,
         required:true,
-    },
+    }],
     date:{
         type:Date,
         required:true,

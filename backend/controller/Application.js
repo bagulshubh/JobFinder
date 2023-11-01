@@ -185,7 +185,9 @@ exports.save = async(req,res)=>{
 exports.getAllApplications = async(req,res)=>{
     try{
 
-        const applicatons = await Application.find({});
+        const applicatons = await Application.find({}).
+        populate('employer')
+        .exec();
 
         return res.status(200).json({
             success:"True",

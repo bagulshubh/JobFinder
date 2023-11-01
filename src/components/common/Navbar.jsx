@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {CgProfile} from 'react-icons/cg'
 import { logout } from '../../services/auth'
@@ -10,8 +10,11 @@ import { logout } from '../../services/auth'
 const Navbar = () => {
 
   const {token} = useSelector( (state)=> (state.auth) )
+  const {userDetails} = useSelector( (state)=> (state.profile) );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
   
   return (
     <div className='nav-con'>
@@ -22,10 +25,15 @@ const Navbar = () => {
       </Link>
 
       <div className='tags-con'>
-        <div>Home</div>
-        <div>Discover</div>
-        <div>Contact</div>
-        <div>About us</div>
+        <Link to='/' className={location.pathname==='/' ? 'tag active' : 'tag' }>Home</Link>
+        <div>
+          {
+            userDetails !== null ? userDetails.role === 'seeker' || userDetails.role=== 'Seeker' ? (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>) : (<Link to='/listing' className={location.pathname==='/listing' ? 'tag active' : 'tag' }>Listing</Link>) : (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>)
+          }
+        </div>
+        
+        <Link to='contact' className={location.pathname==='/contact' ? 'tag active' : 'tag' }>Contact</Link>
+        <Link to='aboutus' className={location.pathname==='/aboutus' ? 'tag active' : 'tag' }>About us</Link>
       </div>
 
 
