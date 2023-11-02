@@ -13,7 +13,8 @@ import Discover from './components/core/pages/Discover';
 import Listing from './components/core/pages/Listing';
 import CreateListing from './components/core/pages/CreateListing';
 import ViewApplication from './components/common/ViewApplication';
-import CommonError from './components/core/error/CommonError'
+import Candidates from './components/core/application/Candidates';
+
 
 function App() {
 
@@ -51,7 +52,11 @@ function App() {
 
         <Route path='/viewApplication' element={<ViewApplication></ViewApplication>}></Route>
 
+        <Route path='/candidates' element={<Candidates></Candidates>}></Route>
+
+        <Route path='/update' element={<Candidates></Candidates>}></Route>
         
+        <Route path='/delete' element={<Candidates></Candidates>}></Route>
 
       </Routes>
       

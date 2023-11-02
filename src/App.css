@@ -121,7 +121,7 @@
   justify-content: center;
   align-items: center;
   padding:3rem;
-  position: relative;
+
 }
 .login-left-div{
   display: flex;
@@ -469,8 +469,44 @@
   width: 100%;
   text-align: center;
 }
-
-
-
+.side-bar-con{
+  position: absolute;
+  background: rgb(237,244,246);
+  background: linear-gradient(7deg, rgba(217,231,235,1) 29%, rgba(234,244,246,1) 55%, rgba(251,251,251,1) 90%);
+  left: 0;
+  padding: 2vw;
+  padding-left: 4vw;
+  padding-right: 2vw;
+  display: flex;
+  height: 89vh;
+  top: 11vh;
+}
+.side-bar{
+  width: 100%;
+}
+.sidetags-con{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3vh;
+  font-size: 1.4vw;
+}
+.sidetag{
+  all: unset;
+  display: flex;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  cursor: pointer;
+  align-items: center;
+  gap: 1vw;
+  background-color: rgb(244,244,246);
+  padding: 0.5rem;
+  border-radius: 7px;
+}
+.activetag{
+  background-color: #91c4e3;
+}
+.right-con{
+  margin-left:9.2vw;
+}
 
 
