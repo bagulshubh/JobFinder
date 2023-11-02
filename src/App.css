@@ -339,10 +339,12 @@
   gap: 5px;
   margin-top: 8px;
   font-size: 1.2rem;
+  width: 100%;
 }
 .app-salary{
   margin-top: 8px;
   font-size: 1.1rem;
+  width: 100% ;
 }
 
 /* Listing Page starts Here */
@@ -453,8 +455,20 @@
   height: 200px;
 
 }
-
-
+.notfound-con{
+  width: 100%;
+  display: flex;
+  align-items:flex-start;
+  justify-content: center;
+}
+.notfound{
+  margin-top: -10rem;
+  width: 60%;
+}
+.comman-error{
+  width: 100%;
+  text-align: center;
+}
 
 
 

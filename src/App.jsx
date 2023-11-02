@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import Discover from './components/core/pages/Discover';
 import Listing from './components/core/pages/Listing';
 import CreateListing from './components/core/pages/CreateListing';
+import ViewApplication from './components/common/ViewApplication';
+import CommonError from './components/core/error/CommonError'
 
 function App() {
 
@@ -46,6 +48,10 @@ function App() {
         <Route path='/listing' element={<Listing></Listing>}></Route>
 
         <Route path='/createListing' element={<CreateListing></CreateListing>}></Route>
+
+        <Route path='/viewApplication' element={<ViewApplication></ViewApplication>}></Route>
+
+        
 
       </Routes>
       

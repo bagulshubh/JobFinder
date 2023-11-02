@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     applications:null,
+    currApp:null,
 };
 
 const applicationSlice = createSlice({
@@ -11,9 +12,12 @@ const applicationSlice = createSlice({
     setAppilication(state, value) {
       state.applications = value.payload;
     },
+    setCurrApp(state,value){
+      state.currApp = value.payload
+    }
   },
 });
 
-export const {setAppilication } = applicationSlice.actions;
+export const {setAppilication ,setCurrApp } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

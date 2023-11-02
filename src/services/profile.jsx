@@ -1,4 +1,5 @@
 import { setUserDetails } from "../slices/profileSlice"
+import { setError } from "../slices/error"
 
 
 export const getUserDetails = (token,navigate)=>{
@@ -27,7 +28,6 @@ export const getUserDetails = (token,navigate)=>{
         }
         catch(err){
             console.log(err.message);
-            navigate('/');
         }
 
 

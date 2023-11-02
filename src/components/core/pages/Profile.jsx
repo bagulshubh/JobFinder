@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
+import NotFound from '../error/NotFound'
 
 const Profile = () => {
 
@@ -8,7 +9,7 @@ const Profile = () => {
   return (
     <div>
       {
-        userDetails === null ? (<div>404 Not Found</div>) : (
+        userDetails === null ? (<NotFound></NotFound>) : (
           <div>{userDetails.fname} {userDetails.lname} {userDetails.email} </div>
         )
       }
