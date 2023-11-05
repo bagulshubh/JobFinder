@@ -14,6 +14,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(userDetails);
 
   
   return (
@@ -26,11 +27,11 @@ const Navbar = () => {
 
       <div className='tags-con'>
         <Link to='/' className={location.pathname==='/' ? 'tag active' : 'tag' }>Home</Link>
-        <div>
+        
           {
-            userDetails !== null ? userDetails.role === 'seeker' || userDetails.role=== 'Seeker' ? (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>) : (<Link to='/listing' className={location.pathname==='/listing' ? 'tag active' : 'tag' }>Listing</Link>) : (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>)
+            userDetails === null || userDetails === undefined || Object.keys(userDetails).length === 0 ?  (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>)  : userDetails.role === 'seeker' || userDetails.role=== 'Seeker' ? (<Link to='/discover' className={location.pathname==='/discover' ? 'tag active' : 'tag' }>Discover</Link>) : (<Link to='/listing' className={location.pathname==='/listing' ? 'tag active' : 'tag' }>Listing</Link>) 
           }
-        </div>
+       
         
         <Link to='contact' className={location.pathname==='/contact' ? 'tag active' : 'tag' }>Contact</Link>
         <Link to='aboutus' className={location.pathname==='/aboutus' ? 'tag active' : 'tag' }>About us</Link>

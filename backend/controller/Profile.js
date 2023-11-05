@@ -61,7 +61,7 @@ exports.getUserDetails = async(req,res)=>{
 
     try{
 
-        const userId = req.user.id;
+        const userId =  req.header("userId") || req.user.id;
 
         if(!userId){
             return res.status(404).json({

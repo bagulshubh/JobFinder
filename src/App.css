@@ -505,8 +505,82 @@
 .activetag{
   background-color: #91c4e3;
 }
-.right-con{
+.right-wrapper{
   margin-left:9.2vw;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2vw;
 }
+.app-main-con{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: flex-start;
+}
+.app-main-tit{
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+}
+.app-main-tit div{
+  font-size:2rem;
+  font-weight: 500;
+}
+.app-main-tit p{
+  font-size: 1.2rem;
+  align-self: flex-end;
+}
+.app-company{
+  font-size: 1.5rem;
+}
+.app-conditions{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 1vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  font-size: 1.2rem;
+}
+.app-conditions div{
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+  font-size: 1.2rem;
+}
+.jd{
+  font-size: 1.3rem;
+}
+.app-extrainfo-con{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin: 1vw;
+  padding: 1vw;
+  gap: 2vh;
+  font-size: 1.2rem;
+}
+.candidatecard-con{
+  display: flex;
+  padding: 2vh;
+}
+.candidate-card{
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  padding: 1vw;
+  gap: 1vh;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
 
 

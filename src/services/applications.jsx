@@ -70,6 +70,7 @@ export const setApplication = (app,navigate)=>{
 
     return async (dispatch)=>{
         try{
+
             const toastId = toast.loading("Loading");
             //call methond to set application from slices
             dispatch(setCurrApp(app));
@@ -121,4 +122,37 @@ export const apply = (applicationId,userId,token,navigate)=>{
 
 }
 
+export const deleteApp = (applicationId,token,navigate)=>{
+    return async(dispatch)=>{
 
+        try{
+
+            const url = 'http://localhost:5000/api/v1/application/deleteApplication';
+
+            const res = await fetch (url,
+                {
+                    method:'DELETE',
+                    headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                    },
+                    mode:'cors',
+                    body:JSON.stringify({
+                        applicationId:applicationId,
+                    }),
+                }
+            )
+            const output = await res.json();
+            console.log(output)
+
+            navigate('/');
+            toast.success("Application Deleted")
+
+        }
+        catch(err){
+            console.log(err.message)
+            navigate('/')
+        }
+
+    }
+}

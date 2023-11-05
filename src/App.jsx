@@ -14,6 +14,9 @@ import Listing from './components/core/pages/Listing';
 import CreateListing from './components/core/pages/CreateListing';
 import ViewApplication from './components/common/ViewApplication';
 import Candidates from './components/core/application/Candidates';
+import DeleteApp from './components/core/application/DeleteApp';
+import Contact from './components/core/pages/Contact';
+import About from './components/core/pages/About';
 
 
 function App() {
@@ -21,8 +24,8 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-
-    if (localStorage.getItem("token")) {
+   
+    if (localStorage.getItem("token") !== undefined) {
       const token = JSON.parse(localStorage.getItem("token"))
       console.log(token);
       dispatch(getUserDetails(token, navigate))
@@ -37,6 +40,10 @@ function App() {
       <Routes>
 
         <Route path='/' element = {<Home></Home>}></Route>
+
+        <Route path='/contact' element={<Contact></Contact>}></Route>
+
+        <Route path='/aboutus' element={<About></About>}></Route>
 
         <Route path='/login' element={<LogIn></LogIn>}></Route>
 
@@ -56,7 +63,7 @@ function App() {
 
         <Route path='/update' element={<Candidates></Candidates>}></Route>
         
-        <Route path='/delete' element={<Candidates></Candidates>}></Route>
+        <Route path='/delete' element={<DeleteApp></DeleteApp>}></Route>
 
       </Routes>
       

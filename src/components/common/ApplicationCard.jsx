@@ -18,7 +18,7 @@ const ApplicationCard = (props) => {
       console.log("Clicked");
       console.log(app)
       dispatch(setApplication(app,navigate));
-      navigate('/viewApplication')
+
     }
 
     const applyHandler = ()=>{
