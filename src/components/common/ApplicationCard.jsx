@@ -2,13 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { setApplication ,  apply } from '../../services/applications';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { setCurrApp } from '../../slices/applicationSlice';
 
 const ApplicationCard = (props) => {
 
     const app = props.app;
     const flag = props.flag;
-    const  navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const {userDetails} = useSelector( (state)=>(state.profile) ); 
@@ -28,6 +28,17 @@ const ApplicationCard = (props) => {
       console.log("Apply Clieked");
     }
 
+    const updateHandler = ()=>{
+      dispatch(setCurrApp(app));
+      navigate("/update");
+    }
+
+    const fuct = () => {
+      console.log("in fuctin");
+      return userDetails.applications.some((appa) => appa._id === app._id);
+    };
+    
+
   return (
     <div className='applicationcard' >
       
@@ -37,7 +48,7 @@ const ApplicationCard = (props) => {
             <p className='app-main-status'>{app.status}</p>
           </div>
           {
-            flag==='true' ? (<div className='submit-btn' onClick={applyHandler}>Apply</div>) : (<div className='submit-btn'>Update</div>)
+            userDetails.role === "Employer" ? <div className='submit-btn' onClick={updateHandler}>Update</div> : fuct() ? <div  className='submit-btn'>Withdraw</div> : <div className='submit-btn' onClick={applyHandler}>Apply</div>
           }
           
         </div>

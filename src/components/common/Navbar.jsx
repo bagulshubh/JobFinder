@@ -41,7 +41,7 @@ const Navbar = () => {
       {
         token ? (
           <div className='auth-con'>
-            <Link to='/profile' className='profile-nav'><CgProfile></CgProfile></Link>
+            <Link to='/profile' className={location.pathname==='/profile'  ? 'profile-nav profile-nav-active' : 'profile-nav'}><CgProfile></CgProfile></Link>
             <div className='auth-btn' onClick={ ()=>{dispatch(logout(navigate))} }>Log Out</div>
 
           </div>

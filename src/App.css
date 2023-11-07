@@ -115,6 +115,9 @@
   justify-content: center;
   color: black;
 }
+.profile-nav-active{
+  color: rgb(244, 44, 44);
+}
 .login-con{
   width: 100%;
   display: flex;
@@ -172,7 +175,7 @@
 .login-logo{
   position: absolute;
   width: 5%;
-  top:1.6rem;
+  top:10.5rem;
   z-index: 2;
 }
 .signup-wrapper{

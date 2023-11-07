@@ -7,6 +7,7 @@ const  {
     apply,
     save,
     getAllApplications,
+    updateApp
 } = require('../controller/Application');
 
 const {
@@ -27,6 +28,8 @@ router.post("/apply",auth,isSeeker,apply);
 router.post("/save",auth,isSeeker,save);
 
 router.get("/getAllApplications",getAllApplications);
+
+router.put("/updateApplication",auth,isEmployeer,updateApp);
 
 
 module.exports = router

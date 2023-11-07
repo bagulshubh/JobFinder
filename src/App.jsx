@@ -17,6 +17,9 @@ import Candidates from './components/core/application/Candidates';
 import DeleteApp from './components/core/application/DeleteApp';
 import Contact from './components/core/pages/Contact';
 import About from './components/core/pages/About';
+import UpdateApp from './components/core/pages/UpdateApp';
+import Applied from './components/core/pages/Applied';
+import Saved from './components/core/pages/Saved';
 
 
 function App() {
@@ -61,9 +64,13 @@ function App() {
 
         <Route path='/candidates' element={<Candidates></Candidates>}></Route>
 
-        <Route path='/update' element={<Candidates></Candidates>}></Route>
+        <Route path='/update' element={<UpdateApp></UpdateApp>}></Route>
         
         <Route path='/delete' element={<DeleteApp></DeleteApp>}></Route>
+
+        <Route path='/applied' element={<Applied></Applied>}></Route>
+
+        <Route path='/saved' element={<Saved></Saved>}></Route>
 
       </Routes>
       

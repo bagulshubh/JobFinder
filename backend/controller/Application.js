@@ -156,7 +156,7 @@ exports.save = async(req,res)=>{
     try{
 
         const applicationId = req.body.applicationId;
-        const userId = req.user.id;
+        const userId = req.body.id;
 
         await User.findByIdAndUpdate(
             {_id:userId},
@@ -204,7 +204,53 @@ exports.getAllApplications = async(req,res)=>{
     }
 }
 
+exports.updateApp = async(req,res)=>{
 
+    try{
+
+        const {
+            id = "",
+            title = "",
+            company = "",
+            jobDescription = "",
+            salary = "",
+            conditions = "",
+            status = "",
+            location = "",
+            exp = "",
+            catagory= "",
+        } = req.body;
+
+        const response = await Application.findByIdAndUpdate(id,{
+            title:title,
+            company:company,
+            jobDescription:jobDescription,
+            salary:salary,
+            conditions:conditions,
+            status:status,
+            location:location,
+            exp:exp,
+            catagory:catagory,
+        })
+
+        //await Application.save();
+
+        return res.status(200).json({
+            success:"True",
+            message:"Application Updated Successfully",
+            body:response,
+        })
+
+
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"False",
+            message:err.message,
+        })
+    }
+}
 
 
 

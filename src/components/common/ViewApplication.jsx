@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SideBar from './SideBar';
 import {BsCheckLg} from 'react-icons/bs'
-import { apply } from '../../services/applications';
+import { apply, save } from '../../services/applications';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -33,7 +33,27 @@ const ViewApplication = () => {
     }
 
     const updateHandler = ()=>{
-      console.log("Update")
+      navigate("/update")
+    }
+
+    const withdrawHandler = ()=>{
+      console.log("withdram")
+    }
+
+    const func = ()=>{
+      console.log("in fuctin");
+      return userDetails.applications.some((appa) => appa._id === currApp._id);
+    }
+
+    const check = ()=>{
+      console.log("in fuctin");
+      return userDetails.saved.some((appa) => appa._id === currApp._id);
+    }
+
+    const saveHandler = ()=>{
+
+      dispatch(save(applicationId,userId,token));
+
     }
   
     return (
@@ -65,10 +85,15 @@ const ViewApplication = () => {
 
               <div className='jd'>Job Description : {currApp.jobDescription}</div>
 
-              <div className='submit-btn' onClick={ userDetails.role === 'Employer' ? updateHandler : applyHandler}>{
-                userDetails.role==='Employer' ? ("Update") : ("Apply")
+              <div className='submit-btn' onClick={ userDetails.role === 'Employer' ? updateHandler : func ? withdrawHandler : applyHandler}>{
+                userDetails.role==='Employer' ? ("Update") : func() ? ("Withdraw") : ("Apply")
               }
+              
                 </div>
+                {
+                  userDetails.role !== "Employer" ? check() ? <div className='submit-btn'>Unsave</div> : <div  className='submit-btn' onClick={saveHandler}>Save</div> :  (<span></span>)
+                }
+                
             
             </div>
 

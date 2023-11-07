@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import NotFound from '../error/NotFound'
+import EmployerProfile from '../profile/EmployerProfile'
+import SideBar from '../../common/SideBar'
 
 const Profile = () => {
 
@@ -8,10 +10,13 @@ const Profile = () => {
   console.log(userDetails)
   return (
     <div>
+
+    <SideBar flag={true}></SideBar>
+
       {
-        userDetails === null ? (<NotFound></NotFound>) : (
-          <div>{userDetails.fname} {userDetails.lname} {userDetails.email} </div>
-        )
+        userDetails === null ? (<NotFound></NotFound>) : <div className='right-wrapper'>
+          <EmployerProfile userDetails={userDetails}></EmployerProfile>
+        </div>
       }
     </div>
   )

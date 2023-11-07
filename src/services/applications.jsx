@@ -1,12 +1,15 @@
-import { setAppilication , setCurrApp } from "../slices/applicationSlice";
+import applicationSlice, { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
+
+
+const BaseUrl = process.env.REACT_APP_BASE_URL;
 
 export const createApplication = (data,navigate,token)=>{
 
     return async()=>{
 
             const toastId = toast.loading("Creating");
-
+            
             const url = 'http://localhost:5000/api/v1/application/createApplication'
 
             const res = await fetch (url,
@@ -122,6 +125,87 @@ export const apply = (applicationId,userId,token,navigate)=>{
 
 }
 
+
+export const updateApp = (data,token,navigate)=>{
+
+    return async(dispatch)=>{
+
+        try{
+            const toastId = toast.loading("Updating");
+            console.log("into dispatch" , data.id);
+            const url = 'http://localhost:5000/api/v1/application/updateApplication';
+
+            const res = await fetch (url,
+                {
+                    method:'PUT',
+                    headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                    },
+                    mode:'cors',
+                    body:JSON.stringify(data),
+                }
+            )
+            console.log(res);
+            toast.dismiss(toastId);
+            if(res.success==="True" || res.status===200){
+                toast.success("Updated Successfully");
+            }
+            else{
+                toast.error("Try again");
+            }
+
+            navigate("/");
+            window.location.reload(false);
+
+        }
+        catch(err){
+            console.log(err.message);
+            navigate("/");
+        }
+
+    }
+
+}
+
+export const save = (applicationId,userId,token)=>{
+    return async(dispatch)=>{
+
+        try{
+
+            const url = 'http://localhost:5000/api/v1/application/save';
+
+            const res = await fetch (url,
+                {
+                    method:'POST',
+                    headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                    },
+                    mode:'cors',
+                    body:JSON.stringify({
+                        applicationId:applicationId,
+                        id:userId,
+                    }),
+                }
+            )
+            console.log(res);
+            if(res.status !=="False" ){
+                toast.success("Saved")
+            }
+
+        }
+        catch(err){
+            console.log(err.message);
+            toast.error("Try again");
+        }
+
+    }
+}
+
+
+
+//need some changes in backend to handle delete of foreing keys
 export const deleteApp = (applicationId,token,navigate)=>{
     return async(dispatch)=>{
 
@@ -156,3 +240,5 @@ export const deleteApp = (applicationId,token,navigate)=>{
 
     }
 }
+
+
