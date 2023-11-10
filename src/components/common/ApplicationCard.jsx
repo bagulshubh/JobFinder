@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { setApplication ,  apply } from '../../services/applications';
+import { setApplication ,  apply, withdraw } from '../../services/applications';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrApp } from '../../slices/applicationSlice';
 
@@ -35,9 +35,15 @@ const ApplicationCard = (props) => {
 
     const fuct = () => {
       console.log("in fuctin");
-      return userDetails.applications.some((appa) => appa._id === app._id);
+      if(userDetails!==null && Object.keys(userDetails).length>0)
+        return userDetails.applications.some((appa) => appa._id === app._id);
+      else
+        return false;  
     };
     
+    const withdrawHandler = ()=>{
+      dispatch(withdraw(app._id,userDetails.id,token,navigate));
+    }
 
   return (
     <div className='applicationcard' >
@@ -48,7 +54,7 @@ const ApplicationCard = (props) => {
             <p className='app-main-status'>{app.status}</p>
           </div>
           {
-            userDetails.role === "Employer" ? <div className='submit-btn' onClick={updateHandler}>Update</div> : fuct() ? <div  className='submit-btn'>Withdraw</div> : <div className='submit-btn' onClick={applyHandler}>Apply</div>
+            userDetails.role === "Employer" ? <div className='submit-btn' onClick={updateHandler}>Update</div> : fuct() ? <div  className='submit-btn' onClick={withdrawHandler}>Withdraw</div> : <div className='submit-btn' onClick={applyHandler}>Apply</div>
           }
           
         </div>

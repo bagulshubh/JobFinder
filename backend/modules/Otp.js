@@ -28,7 +28,8 @@ async function sendVerificationEmail(email, otp) {
 		const mailResponse = await mailSender(
 			email,
 			"Verification Email",
-			`<h2>Your OTP is ${otp}</h2>`
+			`<h1>Welcome to JobFinder</h1>
+			<h2>Your OTP is ${otp}</h2>`
 		);
 		// console.log("Email sent successfully: ", //mailResponse.response);
 	} catch (error) {

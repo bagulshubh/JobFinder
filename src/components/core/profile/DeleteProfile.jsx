@@ -1,32 +1,32 @@
 import React from 'react'
 import SideBar from '../../common/SideBar'
 import { useDispatch, useSelector } from 'react-redux'
+import { deleteProfile } from '../../../services/profile';
 import { useNavigate } from 'react-router-dom';
-import { deleteApp } from '../../../services/applications';
 
-const DeleteApp = () => {
 
-    const {currApp} = useSelector((state)=>(state.application));
-    const {token} = useSelector((state)=>(state.auth))
-    const navigate = useNavigate();
+const DeleteProfile = () => {
+
     const dispatch = useDispatch();
-    console.log(currApp._id);
+    const {userDetails} = useSelector((state)=>(state.profile));
+    const {token} = useSelector((state)=>(state.auth));
+    const navigate = useNavigate();
 
     const deleteHandler = ()=>{
-        // There is a error Handle it 
-        dispatch(deleteApp(currApp._id,token,navigate));
+        console.log("This is Delete")
+        dispatch(deleteProfile(userDetails._id,userDetails.additionalInfo?._id,token,navigate));
     }
 
   return (
     <div>
 
-        <SideBar></SideBar>
+        <SideBar flag={true}></SideBar>
 
         <div className='right-wrapper'>
 
             <div className='delete-con'>
                 <div className='delete-heading'>
-                    Are you sure that you want to DELETE this Listing?
+                    Are you sure that you want to DELETE your Profile?
                 </div>
                 <div onClick={deleteHandler} className='submit-btn'>
                     Delete
@@ -40,4 +40,4 @@ const DeleteApp = () => {
   )
 }
 
-export default DeleteApp
+export default DeleteProfile

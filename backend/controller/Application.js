@@ -72,12 +72,51 @@ exports.createApplication = async(req,res)=>{
 
 }
 
+exports.withdrawApplication = async(req,res)=>{
+
+    try{
+
+        const {applicationId , userId} = req.body;
+
+        await User.findByIdAndUpdate(userId , {
+            $pull:{
+                applications:applicationId,
+            }
+        },
+        {new:true}
+        );
+
+        await Application.findByIdAndUpdate(applicationId,{
+            $pull:{
+                candidates:userId,
+            }
+        },
+        
+        {new:true},
+        )
+
+        return res.status(200).json({
+            success:"True",
+            message:"Application Withdrawn Successfully",
+        })
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"False",
+            message:err.message,
+            location:"In withdrawApplication controller"
+        })
+    }
+
+}
+
 exports.deleteApplication = async (req,res)=>{
 
     try{
 
-        const applicationId = req.body;
-
+        const {applicationId} = req.body;
+        console.log(applicationId)
         if(!applicationId){
             return res.status(404).json({
                 success:"False",
@@ -85,7 +124,7 @@ exports.deleteApplication = async (req,res)=>{
             })
         }
 
-        await Application.findByIdAndDelete({_id:applicationId});
+        await Application.findByIdAndDelete(applicationId);
 
         return  res.status(200).json({
             success:"True",
@@ -180,6 +219,39 @@ exports.save = async(req,res)=>{
             message:err.message,
         })
     }
+}
+
+exports.unsave = async(req,res)=>{
+
+    try{
+
+        const {userId , applicationId} = req.body;
+
+        const response = await User.findByIdAndUpdate(userId , {
+            $pull:{
+                saved:applicationId,
+            }
+        },
+        {new:true},
+        )
+
+        console.log(response);
+
+        return res.status(200).json({
+            success:"True",
+            message:"Application Unsaved",
+            response,
+        })
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"False",
+            message:err.message,
+            location:"In Unsave controller"
+        })
+    }
+
 }
 
 exports.getAllApplications = async(req,res)=>{

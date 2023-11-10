@@ -93,7 +93,32 @@ exports.getUserDetails = async(req,res)=>{
 }
 
 
+exports.deleteProfile = async(req,res)=>{
 
+    try{
+
+        const {userId,profileId} = req.body;
+
+        await User.findByIdAndDelete(userId);
+
+        await Profile.findByIdAndDelete(profileId);
+
+        return res.status(200).json({
+            success:"True",
+            message:"Profile Deleted Successfully",
+        })
+
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"False",
+            message:err.message,
+            location:"In deleteProfile Handler"
+        })
+    }
+
+}
 
 
 

@@ -1,8 +1,8 @@
-import applicationSlice, { setAppilication , setCurrApp } from "../slices/applicationSlice";
+import { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
 
 
-const BaseUrl = process.env.REACT_APP_BASE_URL;
+const BaseUrl = "http://localhost:5000/api/v1"
 
 export const createApplication = (data,navigate,token)=>{
 
@@ -10,7 +10,7 @@ export const createApplication = (data,navigate,token)=>{
 
             const toastId = toast.loading("Creating");
             
-            const url = 'http://localhost:5000/api/v1/application/createApplication'
+            const url = `${BaseUrl}/application/createApplication`
 
             const res = await fetch (url,
                 {
@@ -29,6 +29,7 @@ export const createApplication = (data,navigate,token)=>{
             console.log("here also")
             toast.dismiss(toastId);
             navigate('/');
+            window.location.reload(false);
 
     }
 
@@ -41,7 +42,7 @@ export const getallApplications = (token)=>{
         
         try{
             const toastId = toast.loading("Fetching");
-            const url = 'http://localhost:5000/api/v1/application/getAllApplications';
+            const url = `${BaseUrl}/application/getAllApplications`;
 
             const res = await fetch (url,
                 {
@@ -80,6 +81,7 @@ export const setApplication = (app,navigate)=>{
             console.log(app)
             toast.dismiss(toastId);
             navigate('/viewApplication')
+            
 
         }
         catch(err){
@@ -95,7 +97,7 @@ export const apply = (applicationId,userId,token,navigate)=>{
 
     return async()=>{
         const toastId = toast.loading("Loading")
-        const url = 'http://localhost:5000/api/v1/application/apply';
+        const url = `${BaseUrl}/application/apply`;
 
             const res = await fetch (url,
                 {
@@ -115,12 +117,17 @@ export const apply = (applicationId,userId,token,navigate)=>{
             const output = await res.json();
             console.log(output);
             toast.dismiss(toastId)
-            if(output.success==='True')
+            if(output.success==='True'){
                 toast.success("Apply Successfully",{
                     duration:4000
                 })
+                
+            }
             else toast.error("Cannot Send Application")
             navigate('/');
+            window.location.reload(false);
+
+
     }
 
 }
@@ -128,12 +135,12 @@ export const apply = (applicationId,userId,token,navigate)=>{
 
 export const updateApp = (data,token,navigate)=>{
 
-    return async(dispatch)=>{
+    return async()=>{
 
         try{
             const toastId = toast.loading("Updating");
             console.log("into dispatch" , data.id);
-            const url = 'http://localhost:5000/api/v1/application/updateApplication';
+            const url = `${BaseUrl}/application/updateApplication`;
 
             const res = await fetch (url,
                 {
@@ -169,11 +176,11 @@ export const updateApp = (data,token,navigate)=>{
 }
 
 export const save = (applicationId,userId,token)=>{
-    return async(dispatch)=>{
+    return async()=>{
 
         try{
 
-            const url = 'http://localhost:5000/api/v1/application/save';
+            const url = `${BaseUrl}/application/save`;
 
             const res = await fetch (url,
                 {
@@ -203,16 +210,105 @@ export const save = (applicationId,userId,token)=>{
     }
 }
 
+export const withdraw = (applicationId,userId,token,navigate)=>{
+
+    return async()=>{
+
+        try{
+
+            const url = `${BaseUrl}/application/withdrawApplication`;
+            
+            const res = await fetch (url,
+                {
+                    method:'PUT',
+                    headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                    },
+                    mode:'cors',
+                    body:JSON.stringify({
+                        applicationId:applicationId,
+                        userId:userId,
+                    }),
+                }
+            )
+            const output = await res.json();
+            console.log(output)
+
+            if(output.success==="True"){
+                toast.success("Withdrawn");
+                navigate("/");
+                window.location.reload(false);   
+            }
+            else{
+                toast.error("Try Again");
+                navigate("/");
+            }
+
+
+        }
+        catch(err){
+            console.log(err.message);
+            navigate("/");
+        }
+
+    }
+
+}
+
+
+export const unsave = (applicationId, userId,token,navigate)=>{
+    return async()=>{
+
+        try{
+
+            const url = `${BaseUrl}/application/unsave`;
+            
+            const res = await fetch (url,
+                {
+                    method:'PUT',
+                    headers: {
+                    'Content-type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                    },
+                    mode:'cors',
+                    body:JSON.stringify({
+                        applicationId:applicationId,
+                        userId:userId,
+                    }),
+                }
+            )
+            const output = await res.json();
+            console.log(output);
+
+            if(output.success==="True"){
+                toast.success("Unsaved");
+                navigate("/");
+                window.location.reload(false);   
+            }
+            else{
+                toast.error("Try again");
+                navigate("/");
+            }
+            
+        }
+        catch(err){
+            console.log(err.message);
+            navigate("/");
+        }
+
+    }
+}
 
 
 //need some changes in backend to handle delete of foreing keys
 export const deleteApp = (applicationId,token,navigate)=>{
-    return async(dispatch)=>{
+    return async()=>{
 
         try{
 
-            const url = 'http://localhost:5000/api/v1/application/deleteApplication';
-
+            const url = `${BaseUrl}/application/deleteApplication`;
+            console.log(applicationId)
             const res = await fetch (url,
                 {
                     method:'DELETE',
@@ -231,6 +327,7 @@ export const deleteApp = (applicationId,token,navigate)=>{
 
             navigate('/');
             toast.success("Application Deleted")
+            window.location.reload(false);
 
         }
         catch(err){

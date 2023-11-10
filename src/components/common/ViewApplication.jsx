@@ -2,8 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SideBar from './SideBar';
 import {BsCheckLg} from 'react-icons/bs'
-import { apply, save } from '../../services/applications';
+import { apply, save , withdraw , unsave } from '../../services/applications';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const ViewApplication = () => {
@@ -37,23 +38,32 @@ const ViewApplication = () => {
     }
 
     const withdrawHandler = ()=>{
-      console.log("withdram")
+      dispatch(withdraw(applicationId,userId,token,navigate))
     }
 
     const func = ()=>{
       console.log("in fuctin");
-      return userDetails.applications.some((appa) => appa._id === currApp._id);
+      if(userDetails!==null && Object.keys(userDetails).length>0)
+        return userDetails.applications.some((appa) => appa._id === currApp._id);
+      else 
+        return false;  
     }
 
     const check = ()=>{
       console.log("in fuctin");
-      return userDetails.saved.some((appa) => appa._id === currApp._id);
+      if(userDetails!==null && Object.keys(userDetails).length>0)
+        return userDetails.saved.some((appa) => appa._id === currApp._id);
+      else return false;
     }
 
     const saveHandler = ()=>{
 
       dispatch(save(applicationId,userId,token));
 
+    }
+
+    const unsaveHandler = ()=>{
+      dispatch(unsave(applicationId,userId,token,navigate));
     }
   
     return (
@@ -85,13 +95,13 @@ const ViewApplication = () => {
 
               <div className='jd'>Job Description : {currApp.jobDescription}</div>
 
-              <div className='submit-btn' onClick={ userDetails.role === 'Employer' ? updateHandler : func ? withdrawHandler : applyHandler}>{
+              <div className='submit-btn' onClick={ userDetails.role === 'Employer' ? updateHandler : func() ? withdrawHandler : applyHandler}>{
                 userDetails.role==='Employer' ? ("Update") : func() ? ("Withdraw") : ("Apply")
               }
               
                 </div>
                 {
-                  userDetails.role !== "Employer" ? check() ? <div className='submit-btn'>Unsave</div> : <div  className='submit-btn' onClick={saveHandler}>Save</div> :  (<span></span>)
+                  userDetails.role !== "Employer" ? check() ? <div className='submit-btn' onClick={unsaveHandler}>Unsave</div> : <div  className='submit-btn' onClick={saveHandler}>Save</div> :  (<span></span>)
                 }
                 
             

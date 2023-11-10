@@ -20,6 +20,8 @@ import About from './components/core/pages/About';
 import UpdateApp from './components/core/pages/UpdateApp';
 import Applied from './components/core/pages/Applied';
 import Saved from './components/core/pages/Saved';
+import DeleteProfile from './components/core/profile/DeleteProfile';
+import UpdateProfile from './components/core/profile/UpdateProfile';
 
 
 function App() {
@@ -71,6 +73,10 @@ function App() {
         <Route path='/applied' element={<Applied></Applied>}></Route>
 
         <Route path='/saved' element={<Saved></Saved>}></Route>
+
+        <Route path='/deleteProfile' element={<DeleteProfile></DeleteProfile>}></Route>
+
+        <Route path='/updateProfile' element={<UpdateProfile></UpdateProfile>} ></Route>
 
       </Routes>
       

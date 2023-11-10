@@ -7,7 +7,9 @@ const  {
     apply,
     save,
     getAllApplications,
-    updateApp
+    updateApp,
+    withdrawApplication,
+    unsave
 } = require('../controller/Application');
 
 const {
@@ -30,6 +32,10 @@ router.post("/save",auth,isSeeker,save);
 router.get("/getAllApplications",getAllApplications);
 
 router.put("/updateApplication",auth,isEmployeer,updateApp);
+
+router.put("/withdrawApplication",auth,isSeeker,withdrawApplication);
+
+router.put("/unsave",auth,isSeeker,unsave);
 
 
 module.exports = router
