@@ -44,7 +44,11 @@ const userSchema = new mongoose.Schema({
     }],
     token:{
         type:String,
-    }
+    },
+    messages:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Chat"
+    }],
     
 })
 

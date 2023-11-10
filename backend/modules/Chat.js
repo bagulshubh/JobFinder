@@ -2,10 +2,16 @@ const  mongoose = require("mongoose");
 
 const  chatSchema = new mongoose.Schema({
 
-    subChat:{
+    sender:{
+        type:String,
+    },
+    reciver:{
+        type:String,
+    },
+    subChat:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"SubChat",
-    }
+    }]
 
 
 })

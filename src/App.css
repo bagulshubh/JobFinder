@@ -567,16 +567,22 @@
 }
 .candidatecard-con{
   display: flex;
+  align-items:center;
+  justify-content: center;
   padding: 2vh;
+  width: 100%;
 }
 .candidate-card{
   display: flex;
-  flex-direction: column;
+  width: 100%;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   padding: 1vw;
   gap: 1vh;
   font-size: 1vw;
   cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  
 }
 .delete-con{
   margin: 0 auto;
@@ -617,7 +623,104 @@
 .unselect div{
   opacity: 0.8;
 }
+.btn{
+  padding: 0.5vw;
+  background-color: #91c4e3;
+  margin-bottom: 0.2vw;
+  text-align: center;
+  border-radius: 2px;
+}
+.message-wrapper{
+  width: 100%;
+  display: flex;
+  gap: 2vw;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.message-left{
+  width: 30%;
+  background-color: aliceblue;
+  padding: 1vw;
+  height: 80vh;
+}
+.chats-con{
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+  width: 100%;
+}
+.chat{
+  display: flex;
+  width: 100%;
+  font-size: 1.4vw;
+  align-items: center;
+  border-bottom: 1px solid rgb(70, 69, 69) ;
+  padding: 0.5vw;
+  gap: 1vw;
+  cursor: pointer;
+}
+.message-right{
+  background: rgb(242,247,249);
+background: linear-gradient(243deg, rgba(242,247,249,1) 8%, rgba(189,224,245,1) 37%, rgba(199,216,246,1) 59%, rgba(251,251,251,1) 86%);
+  width: 68%;
+  height: 80vh;
+  display: flex;
+  position: relative;
+}
+.viewmessage-con{
+  width: 100%;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  gap: 2vh;
+ 
+}
+.message-con{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 2vh;
 
-
-
+  
+}
+.message{
+  background-color: #edf2f5;
+  padding: 1vw 1vh;
+  border-radius: 5px;
+  font-size: 1.1vw;
+  
+}
+.sended{
+  align-self: flex-start;
+}
+.select{
+  text-align: center;
+  font-size: 1.2vw;
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+}
+.message-input{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+}
+.message-input input{
+  all: unset;
+  width: 100%;
+  padding: 0.8vh 1vw;
+  font-size: 1.1vw;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.icon{
+  font-size: 2vw;
+  cursor: pointer;
+}
 

@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {CgProfile} from 'react-icons/cg'
 import { logout } from '../../services/auth'
-
+import {BiMessage} from 'react-icons/bi'
 
 
 const Navbar = () => {
@@ -42,6 +42,7 @@ const Navbar = () => {
         token ? (
           <div className='auth-con'>
             <Link to='/profile' className={location.pathname==='/profile'  ? 'profile-nav profile-nav-active' : 'profile-nav'}><CgProfile></CgProfile></Link>
+            <Link to="/messages" className={location.pathname==='/messages' ? 'profile-nav profile-nav-active' : 'profile-nav'}><BiMessage></BiMessage></Link>
             <div className='auth-btn' onClick={ ()=>{dispatch(logout(navigate))} }>Log Out</div>
 
           </div>

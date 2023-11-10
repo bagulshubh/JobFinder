@@ -5,6 +5,7 @@ const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile")
 const applicationRoutes = require("./routes/application")
 const tagRoutes = require('./routes/tag')
+const chatRoutes = require('./routes/chat')
 const cookieParser = require("cookie-parser");
 
 const database = require('./configuration/dbConnect');
@@ -30,6 +31,7 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/application", applicationRoutes);
 app.use('/api/v1/tag',tagRoutes);
+app.use('/api/v1/chat',chatRoutes);
 
 app.get("/", (req, res) => {
 	return res.json({

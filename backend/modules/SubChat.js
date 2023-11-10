@@ -9,6 +9,9 @@ const  subchatSchema = new mongoose.Schema({
     date:{
         type:Date,
         required:true,
+    },
+    sender:{
+        type:mongoose.Schema.Types.ObjectId,
     }
 
 })

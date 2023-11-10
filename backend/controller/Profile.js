@@ -74,6 +74,12 @@ exports.getUserDetails = async(req,res)=>{
         .populate("additionalInfo")
         .populate("applications")
         .populate("saved")
+        .populate({
+            path:"messages",
+            populate:{
+                path:"subChat"
+            }
+        })
         .exec();
 
         return res.status(200).json({
