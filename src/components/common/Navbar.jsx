@@ -41,7 +41,12 @@ const Navbar = () => {
       {
         token ? (
           <div className='auth-con'>
-            <Link to='/profile' className={location.pathname==='/profile'  ? 'profile-nav profile-nav-active' : 'profile-nav'}><CgProfile></CgProfile></Link>
+            {
+              userDetails===null || userDetails.image === "" ||  Object.keys(userDetails).length===0 ?  <Link to='/profile' className={location.pathname==='/profile'  ? 'profile-nav profile-nav-active' : 'profile-nav'}><CgProfile></CgProfile></Link>
+              :
+              <Link to='/profile' className='profile-image-con'><img src={userDetails.image} className='profile-image'></img></Link>
+            }
+            
             <Link to="/messages" className={location.pathname==='/messages' ? 'profile-nav profile-nav-active' : 'profile-nav'}><BiMessage></BiMessage></Link>
             <div className='auth-btn' onClick={ ()=>{dispatch(logout(navigate))} }>Log Out</div>
 

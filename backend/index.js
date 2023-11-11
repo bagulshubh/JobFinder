@@ -7,9 +7,10 @@ const applicationRoutes = require("./routes/application")
 const tagRoutes = require('./routes/tag')
 const chatRoutes = require('./routes/chat')
 const cookieParser = require("cookie-parser");
-
+const {cloudinaryConnect} = require("./configuration/cloudinary")
 const database = require('./configuration/dbConnect');
 const  cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 require("dotenv").config();
 
@@ -26,6 +27,16 @@ app.use(
  		credentials:true,
     })
 )
+
+app.use(
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: "/tmp/",
+	})
+);
+
+// Connecting to cloudinary
+cloudinaryConnect();
 
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);

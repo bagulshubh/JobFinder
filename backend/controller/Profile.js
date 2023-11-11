@@ -1,5 +1,6 @@
 const  Profile  = require('../modules/Profile');
 const  User = require('../modules/User');
+const {uploadImageToCloudinary} = require('../utils/imageUploader');
 
 
 //updating the  profile 
@@ -126,7 +127,38 @@ exports.deleteProfile = async(req,res)=>{
 
 }
 
+exports.updateProfileImage = async(req,res)=>{
+    try{
 
+        const displayPicture = req.files.displayPicture
+        const userId = req.user.id
+        const image = await uploadImageToCloudinary(
+            displayPicture,
+            process.env.FOLDER_NAME,
+            1000,
+            1000
+        )
+        console.log(image)
+        const updatedProfile = await User.findByIdAndUpdate(
+            { _id: userId },
+            { image: image.secure_url },
+            { new: true }
+        )
+        res.send({
+            success: true,
+            message: `Image Updated successfully`,
+            data: updatedProfile,
+        }) 
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"False",
+            message:err.message,
+            location:"Update Profile Image controller"
+        })
+    }
+}
 
 
 

@@ -93,6 +93,8 @@ const UpdateProfile = () => {
                     </div>
                 </div>
 
+                
+
                 <div className='jd'>
                     <label>About</label>
                     <textarea type='text' placeholder='Tell about yourself' name='about' value={about} onChange={changeHandler}></textarea>
