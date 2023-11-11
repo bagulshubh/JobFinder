@@ -89,6 +89,7 @@ exports.signUp = async(req,res)=>{
             role:role,
             additionalInfo:additional._id,
             tags:tags,
+            image:"",
         });
 
         return res.status(200).json({

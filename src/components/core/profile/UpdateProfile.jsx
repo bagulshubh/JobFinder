@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import SideBar from '../../common/SideBar'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateProfile } from '../../../services/profile'
+import { updateDisplayPicture, updateProfile } from '../../../services/profile'
 import { useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
 
 const UpdateProfile = () => {
 
     const {userDetails} = useSelector((state)=>(state.profile));
+    const ref = useRef();
 
     const [data,setdata] = useState({
         fname:userDetails.fname,
@@ -23,7 +25,7 @@ const UpdateProfile = () => {
 
     const {fname,lname,mobileNo,gender,companyName,collageName,percentage,gYear,about} = data;
     const {token} = useSelector((state)=>(state.auth));
-
+    const [file,setFile] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -31,6 +33,16 @@ const UpdateProfile = () => {
         console.log("update")
         dispatch(updateProfile(userDetails._id,token,navigate,data));
     }
+    const onChangeFile = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        const selectedFile = event.target.files[0];
+        console.log(selectedFile);
+        setFile(selectedFile);
+        const formData = new FormData()
+        formData.append("displayPicture", selectedFile)
+        dispatch(updateDisplayPicture(token,formData,navigate));
+    };
 
     const changeHandler = (event)=>{
         setdata( (prev)=> ({
@@ -93,7 +105,19 @@ const UpdateProfile = () => {
                     </div>
                 </div>
 
-                
+                <div className='first-div'>
+                    Update Profile Image
+                    <input
+                        id="myInput"
+                        type="file"
+                        ref={ref}
+                        style={{ display: 'none' }}
+                        onChange={onChangeFile}
+                        />
+                        <div className='submit-btn' onClick={() => ref.current.click()}>
+                        Select
+                    </div>
+                </div>
 
                 <div className='jd'>
                     <label>About</label>

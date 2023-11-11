@@ -124,3 +124,40 @@ export const updateProfile = (userId,token,navigate,data)=>{
     }
 }
 
+export const updateDisplayPicture=(token, formData,navigate)=> {
+    return async (dispatch) => {
+      const toastId = toast.loading("Loading...")
+      try {
+
+        const url = 'http://localhost:5000/api/v1/profile/updateImage'
+        const res = await fetch (url,
+            {
+                method: 'PUT',
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+                mode: 'cors',
+                body: formData,
+            }
+        )
+        
+        const output = await res.json();
+        console.log(output);
+        
+        if(output.success===true){
+            toast.success("Display Picture Updated Successfully")
+            navigate("/");
+            window.location.reload(false);
+        }
+        else{
+            toast.error("Try Again");
+        }
+        
+      } 
+      catch (error) {
+        console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............", error)
+        toast.error("Could Not Update Display Picture")
+      }
+      toast.dismiss(toastId)
+    }
+  }
