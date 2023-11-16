@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin:"https://jobfindeer.netlify.app/",
+        origin:"https://jobfindeer.netlify.app",
  		credentials:true,
     })
 )
