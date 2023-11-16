@@ -130,7 +130,7 @@ export const updateDisplayPicture=(token, formData,navigate)=> {
       const toastId = toast.loading("Loading...")
       try {
 
-        const url = 'https://jobfinder-ik40.onrender.com//api/v1/profile/updateImage'
+        const url = 'https://jobfinder-ik40.onrender.com/api/v1/profile/updateImage'
         const res = await fetch (url,
             {
                 method: 'PUT',
