@@ -1,4 +1,4 @@
-const BaseUrl = "http://localhost:5000/api/v1"
+const BaseUrl = "https://jobfinder-ik40.onrender.com/api/v1"
 import toast from "react-hot-toast";
 
 export const createSocket = (senderId,reciverId,navigate)=>{

@@ -5,7 +5,7 @@ export const getCandidateInfo = (id,token,setdata)=>{
     return async(dispatch)=>{
 
         try{
-            const url = 'http://localhost:5000/api/v1/profile/getUserDetails'
+            const url = 'https://jobfinder-ik40.onrender.com//api/v1/profile/getUserDetails'
 
 
             const res = await fetch (url,

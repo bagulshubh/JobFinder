@@ -5,7 +5,7 @@ import toast from "react-hot-toast"
 
 
 export const sendotp = async(email)=>{
-    const  url = 'http://localhost:5000/api/v1/auth/sendotp'
+    const  url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/sendotp'
     const toastId = toast.loading("Sending..")
     const res = await fetch (url,
         {

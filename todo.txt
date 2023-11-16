@@ -1,0 +1,6 @@
+1) work on tags ->create
+                ->delete
+                ->user can use them
+2) find a way to upload a resume
+3) work on better error and exception handling
+4) improve css
