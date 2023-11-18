@@ -29,7 +29,7 @@ export const signup = (user,navigate)=>{
     return async(dispatch)=>{
         try{
             const toastId = toast.loading("Loading");
-            const  url = 'http://localhost:5000/api/v1/auth/signup'
+            const  url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/signup'
 
             const res = await fetch (url,
                 {
@@ -59,7 +59,7 @@ export const signup = (user,navigate)=>{
 export function login(user,navigate){
     return async (dispatch)=>{
         const toastId = toast.loading("Loading");
-        const url = 'http://localhost:5000/api/v1/auth/login'
+        const url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/login'
 
         const res = await fetch (url,
         {
