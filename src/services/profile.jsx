@@ -2,7 +2,7 @@ import { setUserDetails } from "../slices/profileSlice"
 import { setToken } from "../slices/authSlice"
 import toast from "react-hot-toast"
 
-const BaseUrl = "https://jobfinder-ik40.onrender.com/";
+const BaseUrl =  "http://localhost:5000/api/v1"  //|| "https://jobfinder-ik40.onrender.com/api/v1"
 
 export const deleteProfile = (userId,profileId,token,navigate)=>{
 
@@ -55,7 +55,7 @@ export const getUserDetails = (token,navigate)=>{
     return async(dispatch)=>{
 
         try{
-            const url = 'https://jobfinder-ik40.onrender.com/api/v1/profile/getUserDetails'
+            const url = `${BaseUrl}/profile/getUserDetails`
             const res = await fetch (url,
                 {
                     method:'GET',
@@ -89,7 +89,7 @@ export const updateProfile = (userId,token,navigate,data)=>{
 
         try{
 
-            const url = 'https://jobfinder-ik40.onrender.com/api/v1/profile/updateProfile'
+        const url = `${BaseUrl}/profile/updateProfile`
             const res = await fetch (url,
                 {
                     method:'PUT',
@@ -130,7 +130,7 @@ export const updateDisplayPicture=(token, formData,navigate)=> {
       const toastId = toast.loading("Loading...")
       try {
 
-        const url = 'https://jobfinder-ik40.onrender.com/api/v1/profile/updateImage'
+        const url = `${BaseUrl}/profile/updateImage`
         const res = await fetch (url,
             {
                 method: 'PUT',

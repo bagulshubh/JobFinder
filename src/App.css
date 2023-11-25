@@ -292,6 +292,9 @@
 }
 .discover{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 .applicationcard-con{
@@ -736,3 +739,29 @@ background: linear-gradient(243deg, rgba(242,247,249,1) 8%, rgba(189,224,245,1) 
   height: 100%;
   border-radius: 50%;
 }
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #5ae0f2 transparent rgb(127, 184, 223) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

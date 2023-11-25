@@ -3,9 +3,11 @@ import { setToken } from "../slices/authSlice"
 import { getUserDetails } from "./profile"
 import toast from "react-hot-toast"
 
+const BaseUrl =  "http://localhost:5000/api/v1" // || "https://jobfinder-ik40.onrender.com/api/v1"
+
 
 export const sendotp = async(email)=>{
-    const  url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/sendotp'
+    const  url = `${BaseUrl}/auth/sendotp`
     const toastId = toast.loading("Sending..")
     const res = await fetch (url,
         {
@@ -29,7 +31,7 @@ export const signup = (user,navigate)=>{
     return async(dispatch)=>{
         try{
             const toastId = toast.loading("Loading");
-            const  url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/signup'
+            const  url = `${BaseUrl}/auth/signup`
 
             const res = await fetch (url,
                 {
@@ -59,7 +61,7 @@ export const signup = (user,navigate)=>{
 export function login(user,navigate){
     return async (dispatch)=>{
         const toastId = toast.loading("Loading");
-        const url = 'https://jobfinder-ik40.onrender.com/api/v1/auth/login'
+        const  url = `${BaseUrl}/auth/login`
 
         const res = await fetch (url,
         {

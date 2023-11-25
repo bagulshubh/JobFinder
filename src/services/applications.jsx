@@ -2,7 +2,8 @@ import { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
 
 
-const BaseUrl = "https://jobfinder-ik40.onrender.com/api/v1"
+const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
+
 
 export const createApplication = (data,navigate,token)=>{
 
@@ -36,12 +37,12 @@ export const createApplication = (data,navigate,token)=>{
 }
 
 
-export const getallApplications = (token)=>{
+export const getallApplications = (token,setloading)=>{
 
     return async(dispatch)=>{
         
         try{
-            const toastId = toast.loading("Fetching");
+            setloading(true);
             const url = `${BaseUrl}/application/getAllApplications`;
 
             const res = await fetch (url,
@@ -59,7 +60,7 @@ export const getallApplications = (token)=>{
             const output = await res.json();
             console.log(output);
             dispatch(setAppilication(output.body));
-            toast.dismiss(toastId);
+            setloading(false);
         }
         catch(err){
             console.log(err.message);
