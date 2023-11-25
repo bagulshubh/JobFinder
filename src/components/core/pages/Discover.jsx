@@ -28,7 +28,7 @@ const Discover = () => {
         <div className='discover'>
 
             {
-                loading ? <div class="lds-dual-ring"></div>
+                loading ? <div className="lds-dual-ring"></div>
                         :
                         
                         applications === null || applications.length===0 ? (<div>Login or Signup</div>) : (

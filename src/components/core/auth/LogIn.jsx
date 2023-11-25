@@ -9,7 +9,7 @@ import loginlogo from '../../../assets/login-logo.png'
 const LogIn = () => {
 
   const dispatch = useDispatch();
-
+  const [loading,setloading] = useState(false);
 
   const [user,setUser] = useState({
     email:"",
@@ -28,11 +28,15 @@ const LogIn = () => {
   }
 
   const submitHandler = async()=>{
-    dispatch(login(user,navigate));
+    dispatch(login(user,navigate,setloading));
   }
 
   return (
     <div className='login-con'>
+
+      {
+        loading ? <div className='lds-dual-ring'></div> 
+        :
 
       <div className='login-left-div'>
 
@@ -52,7 +56,7 @@ const LogIn = () => {
 
           <button onClick={submitHandler} className='submit-btn'>Submit</button>
       </div>
-
+      }
     </div>
   )
 }

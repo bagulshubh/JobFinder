@@ -4,13 +4,15 @@ import NotFound from './NotFound';
 
 const CommonError = () => {
 
-  const error  = useSelector( (state)=> (state.error) );
+  const {errorMessage}  = useSelector( (state)=> (state.error) );
 
   return (
     <div className='common-error'>
     <div> 
       {
-          error === null ? (<div><NotFound></NotFound></div>) : (<div>{error}</div>)
+          errorMessage === null ? (<div><NotFound></NotFound></div>) : (<div className="error-div">
+          
+          {errorMessage}</div>)
         }
     </div>
       

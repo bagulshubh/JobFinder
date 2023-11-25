@@ -23,7 +23,7 @@ import Saved from './components/core/pages/Saved';
 import DeleteProfile from './components/core/profile/DeleteProfile';
 import UpdateProfile from './components/core/profile/UpdateProfile';
 import Message from './components/core/message/Message';
-
+import CommonError from './components/core/error/CommonError';
 
 function App() {
 
@@ -80,6 +80,8 @@ function App() {
         <Route path='/updateProfile' element={<UpdateProfile></UpdateProfile>} ></Route>
 
         <Route path='/messages' element={<Message></Message>}></Route>
+
+        <Route path='/error' element={<CommonError></CommonError>}></Route>
 
       </Routes>
       

@@ -19,6 +19,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [submitFlag,setsubmitFlag] = useState(false);
+    const [loading,setloading] = useState(false);
 
     const {fname,lname,email,password,confirmpassword,otp} = user;
 
@@ -33,20 +34,22 @@ const Signup = () => {
 
     
     const  subminHandler = async()=>{
-        
-        sendotp(user.email);
+       
+        dispatch(sendotp(user.email,setloading,navigate));
         setsubmitFlag(true);
-
+       
     }
 
     const singupHandler = async()=>{
-        dispatch(signup(user,navigate));
+        dispatch(signup(user,navigate,setloading));
     }
 
     return (
     <div className='signup-wrapper'>
       
         {
+            loading ? <div className='lds-dual-ring'></div> :
+
             submitFlag ? (
                 <div className='otp-con'>
 
