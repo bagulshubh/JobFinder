@@ -1,11 +1,11 @@
 const express = require('express');
 const  app = express();
-
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile")
 const applicationRoutes = require("./routes/application")
 const tagRoutes = require('./routes/tag')
 const chatRoutes = require('./routes/chat')
+const countRoutes = require("./routes/count")
 const cookieParser = require("cookie-parser");
 const {cloudinaryConnect} = require("./configuration/cloudinary")
 const database = require('./configuration/dbConnect');
@@ -43,6 +43,7 @@ app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/application", applicationRoutes);
 app.use('/api/v1/tag',tagRoutes);
 app.use('/api/v1/chat',chatRoutes);
+app.use("/api/v1/count",countRoutes);
 
 app.get("/", (req, res) => {
 	return res.json({

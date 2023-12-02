@@ -133,10 +133,6 @@ export function login(user, navigate,setloading) {
                 setloading(false);
                 navigate('/');
             }
-
-           
-            
-
         }
         catch (err) {
             toast.error("Try Again")
