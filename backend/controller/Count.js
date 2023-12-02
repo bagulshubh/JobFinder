@@ -28,8 +28,21 @@ exports.getCount = async(req,res)=>{
 
     try{
 
-        const allCount = Count.find({});
+        const allCount = await Count.findById(process.env.MASTER_COUNT);
 
+        if (!allCount) {
+            return res.status(404).json({
+                success: false,
+                message: "Count document not found",
+                location: "GetCount Controller"
+            });
+        }
+
+        const countData = {
+            jobs: allCount.jobs,
+        };
+        console.log(countData)
+        console.log(allCount)
         return  res.status(200).json({
             success:"true",
             messsage:"Count is fetched successfully",
@@ -73,3 +86,5 @@ exports.countJobs = async(req,res)=>{
     }
 
 }
+
+//there should be one for delete also

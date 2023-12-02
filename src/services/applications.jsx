@@ -26,6 +26,26 @@ export const createApplication = (data,navigate,token)=>{
             )
             console.log("till here")
             const output = await res.json();
+
+            if(output.success === "True" || output.success === "true" || output.success === true){
+                //have to call count 
+                const url = `${BaseUrl}/count/countJob`
+
+                const res = await fetch (url,
+                    {
+                        method:'POST',
+                        headers: {
+                        'Content-type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                        },
+                        mode:'cors',
+                        body:null,
+                    }
+                )
+                const output = await res.json();
+                console.log(output);
+            }
+
             console.log(output);
             console.log("here also")
             toast.dismiss(toastId);
