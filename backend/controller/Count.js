@@ -87,4 +87,177 @@ exports.countJobs = async(req,res)=>{
 
 }
 
-//there should be one for delete also
+
+exports.decreaseJob = async(req,res)=>{
+
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.jobs -= 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"Deleted Successfully",
+            body:update
+        })
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            message:err.message,
+            location:"decreaseJob"
+        })
+    }
+
+}
+
+//todo: make  one for all fileds of count model
+
+exports.countCandidate = async(req,res)=>{
+
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.candidates += 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"Updated Successfully",
+            body:update
+        })
+        
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            message:err.message,
+            location:"countCandidate Controller"
+        })
+    }
+
+}
+
+exports.decreaseCandidate = async(req,res)=>{
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.candidates -= 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"upated Successfully",
+            body:update
+        })
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            mssage:err.message,
+            location:"DecreaseCandidate controller"
+        })
+    }
+}
+
+
+exports.countAccepted = async(req,res)=>{
+
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.accepted += 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"Updated Successfully",
+            body:update
+        })
+        
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            message:err.message,
+            location:"countaccepted Controller"
+        })
+    }
+
+}
+
+
+exports.countHired = async(req,res)=>{
+
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.hired += 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"Updated Successfully",
+            body:update
+        })
+        
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            message:err.message,
+            location:"countHired Controller"
+        })
+    }
+
+}
+
+exports.decreaseHired = async(req,res)=>{
+    try{
+
+        const id = process.env.MASTER_COUNT;
+
+        const count = await Count.findById(id);
+
+        count.hired -= 1;
+
+        const update = await count.save();
+
+        return res.status(200).json({
+            success:"true",
+            message:"upated Successfully",
+            body:update
+        })
+
+    }
+    catch(err){
+        return res.status(500).json({
+            success:"false",
+            mssage:err.message,
+            location:"DecreaseHired controller"
+        })
+    }
+}
