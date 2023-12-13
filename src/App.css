@@ -773,17 +773,43 @@ background: linear-gradient(243deg, rgba(242,247,249,1) 8%, rgba(189,224,245,1) 
   flex-grow: 1;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 2px solid rgb(124, 123, 123);
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 2px solid rgb(221, 154, 188);
+  border-bottom: 2px solid rgb(155, 188, 225);
+  border-right: 5px solid rgb(227, 99, 82);
   height: 20vh;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  box-shadow: 0 0 10px rgba(213, 227, 161, 0.8);
 }
-#box3{
+#box3 {
   border-right: none;
+  color: #3366cc; /* Blue for general text */
 }
+#box2 {
+  color: #dc3545; /* Red for important information */
+}
+#box1 {
+  color: #28a745; /* Green for positive trends */
+}
+.bottom-div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  border-top: none;
+}
+#box22{
+  border-top: none;
+  border-right: none;
+  color: #065c2d ;
+}
+#box21{
+  border-top: none;
+  color: #9933cc ;
+}
+
 
 
 

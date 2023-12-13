@@ -64,14 +64,14 @@ const Home = () => {
         <div className='hero-con'>
 
             <div className='top-div'>
-              <div className='box' id='box1'>{data.jobs}</div>
-              <div className='box' id='box2'>{data.candidates}</div>
-              <div className='box' id='box3'>{data.accepted}</div>
+              <div className='box' id='box1'><p>Jobs</p>{data.jobs}</div>
+              <div className='box' id='box2'><p>Candidates</p>{data.candidates}</div>
+              <div className='box' id='box3'><p>Accepted</p>{data.accepted}</div>
             </div>
 
             <div className='bottom-div'>
-              <div className='box2' id='box21'>{data.hires}</div>
-              <div className='box2' id='box22'>{data.companies.length}</div>
+              <div className='box' id='box21'><p>Hired</p>{data.hires}</div>
+              <div className='box' id='box22'><p>Companies</p>{data.companies.length}</div>
             </div>
 
         </div>
