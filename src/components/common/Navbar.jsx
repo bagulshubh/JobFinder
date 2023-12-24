@@ -39,7 +39,7 @@ const Navbar = () => {
 
 
       {
-        token ? (
+        token !== null ? (
           <div className='auth-con'>
             {
               userDetails===null || userDetails.image === "" ||  Object.keys(userDetails).length===0 ?  <Link to='/profile' className={location.pathname==='/profile'  ? 'profile-nav profile-nav-active' : 'profile-nav'}><CgProfile></CgProfile></Link>

@@ -1,5 +1,6 @@
 const Count =  require("../modules/Count");
 
+//this will practically never use
 exports.createCount = async(req,res)=>{
 
     try{

@@ -1,13 +1,13 @@
 import { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
-
+import {increaseJob,decreaseJob} from './count'
 
 const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
 
 
 export const createApplication = (data,navigate,token)=>{
 
-    return async()=>{
+    return async(dispatch)=>{
 
             const toastId = toast.loading("Creating");
             
@@ -29,21 +29,7 @@ export const createApplication = (data,navigate,token)=>{
 
             if(output.success === "True" || output.success === "true" || output.success === true){
                 //have to call count 
-                const url = `${BaseUrl}/count/countJob`
-
-                const res = await fetch (url,
-                    {
-                        method:'POST',
-                        headers: {
-                        'Content-type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                        },
-                        mode:'cors',
-                        body:null,
-                    }
-                )
-                const output = await res.json();
-                console.log(output);
+                dispatch(increaseJob(navigate));
             }
 
             console.log(output);
@@ -324,7 +310,7 @@ export const unsave = (applicationId, userId,token,navigate)=>{
 
 //need some changes in backend to handle delete of foreing keys
 export const deleteApp = (applicationId,token,navigate)=>{
-    return async()=>{
+    return async(dispatch)=>{
 
         try{
 
@@ -345,7 +331,7 @@ export const deleteApp = (applicationId,token,navigate)=>{
             )
             const output = await res.json();
             console.log(output)
-
+            dispatch(decreaseJob(navigate));
             navigate('/');
             toast.success("Application Deleted")
             window.location.reload(false);

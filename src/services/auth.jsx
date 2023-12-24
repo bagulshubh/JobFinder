@@ -1,6 +1,7 @@
 import { setUserDetails } from "../slices/profileSlice"
 import { setToken, setloading } from "../slices/authSlice"
 import { getUserDetails } from "./profile"
+import { increaseCandidate } from "./count"
 import toast from "react-hot-toast"
 import { setError } from "../slices/error"
 
@@ -78,6 +79,7 @@ export const signup = (user, navigate, setloading) => {
                 navigate('/error');
             }
             else {
+                dispatch(increaseCandidate(navigate));
                 toast.success("SignUp Successfull")
                 setloading(false);
                 navigate('/login');

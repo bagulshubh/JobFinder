@@ -1,9 +1,10 @@
-import React, { useDebugValue, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import homepageImage from '../../../assets/homepage_image.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { setError } from '../../../slices/error';
 import { getCount } from '../../../services/count';
+import Goals from '../../Goals';
 
 const Home = () => {
 
@@ -39,6 +40,8 @@ const Home = () => {
   return (
 
     <div className='homepage-wrapper'>
+
+        
 
         <div className='homepage-con'>
 
@@ -76,6 +79,9 @@ const Home = () => {
 
         </div>
 
+        <Goals></Goals>
+
+   
 
     </div>
 
