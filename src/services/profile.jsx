@@ -75,7 +75,7 @@ export const getUserDetails = (token,navigate)=>{
             console.log(output.body);
 
             dispatch(setUserDetails({ ...output.body}));
-
+            return output.body;
         }
         catch(err){
             console.log(err.message);

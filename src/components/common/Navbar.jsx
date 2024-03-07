@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {CgProfile} from 'react-icons/cg'
 import { logout } from '../../services/auth'
 import {BiMessage} from 'react-icons/bi'
-
+import darkLogo from '../../assets/dark_logo.png'
+import {IoIosNotificationsOutline } from 'react-icons/io'
 
 const Navbar = () => {
 
@@ -46,6 +47,8 @@ const Navbar = () => {
               :
               <Link to='/profile' className='profile-image-con'><img src={userDetails.image} className='profile-image'></img></Link>
             }
+
+            <Link to='/notification' className={location.pathname==='/messages' ? 'profile-nav profile-nav-active' : 'profile-nav'}><IoIosNotificationsOutline ></IoIosNotificationsOutline></Link>
             
             <Link to="/messages" className={location.pathname==='/messages' ? 'profile-nav profile-nav-active' : 'profile-nav'}><BiMessage></BiMessage></Link>
             <div className='auth-btn' onClick={ ()=>{dispatch(logout(navigate))} }>Log Out</div>

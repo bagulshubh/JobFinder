@@ -2,6 +2,7 @@ const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onr
 import toast from "react-hot-toast";
 import { increaseAccepted } from "./count";
 
+
 export const createSocket = (senderId,reciverId,navigate)=>{
 
     return async(dispatch)=>{
@@ -74,7 +75,7 @@ export const sendMessage = (senderId,chatId,body,navigate)=>{
             if(output.success==="True"){
                 toast.success("Sent");
                 navigate("/")
-                window.location.reload(false);
+                //window.location.reload(false);
                 
             }
             else{

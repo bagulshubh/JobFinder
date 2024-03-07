@@ -31,6 +31,12 @@ const LogIn = () => {
     dispatch(login(user,navigate,setloading));
   }
 
+  const keyHandler = (event)=>{
+    if(event.key === 'Enter'){
+      submitHandler();
+    }
+  }
+
   return (
     <div className='login-con'>
 
@@ -51,7 +57,7 @@ const LogIn = () => {
           
           <div className='login-email'>
             <label>Password</label>
-            <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
+            <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password} onKeyDown={keyHandler}></input>
           </div>
 
           <button onClick={submitHandler} className='submit-btn'>Submit</button>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { createApplication } from '../../../services/applications';
 import { useDispatch, useSelector } from 'react-redux';
+import SideBar from '../../common/SideBar';
 
 const CreateListing = () => {
 
@@ -49,7 +50,9 @@ const CreateListing = () => {
     return (
     <div className='cl-con'>
 
-        <div className='cl'>
+        <SideBar flag={true}></SideBar>
+
+        <div className='cl right-wrapper'>
 
             <div className='first-div'>
 

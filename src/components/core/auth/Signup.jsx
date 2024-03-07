@@ -44,6 +44,18 @@ const Signup = () => {
         dispatch(signup(user,navigate,setloading));
     }
 
+    const keyHandler = (event)=>{
+        if(event.key === "Enter"){
+            subminHandler();
+        }
+    }
+
+    const keyHandler2 = (event)=>{
+        if(event.key === "Enter"){
+            singupHandler();
+        }
+    }
+
     return (
     <div className='signup-wrapper'>
       
@@ -54,7 +66,7 @@ const Signup = () => {
                 <div className='otp-con'>
 
                     <label>Enter OTP</label>
-                    <input type='text' placeholder='otp' name='otp' value={otp} onChange={changeHandler}></input>
+                    <input type='text' placeholder='otp' name='otp' value={otp} onChange={changeHandler} onKeyDown={keyHandler2} ></input>
 
                     <button onClick={singupHandler} className='submit-btn'>Submit</button>
 
@@ -83,13 +95,13 @@ const Signup = () => {
                         <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
 
                         <label>Confirm Password</label>
-                        <input type='password' placeholder='Confirm Password' onChange={changeHandler} name='confirmpassword' value={confirmpassword}></input>
+                        <input type='password' placeholder='Confirm Password' onChange={changeHandler} name='confirmpassword' value={confirmpassword} onKeyDown={keyHandler}></input>
                     </div>
 
                     <div className='radio-con'>
                         <div>
                             <input type='radio' id='Seeker' name
-                            ='role' onClick={changeHandler}  value="Seeker"></input>
+                            ='role' onClick={changeHandler}  value="Seeker" defaultChecked></input>
                             <label for='Seeker'>Seeker</label>
                         </div>
                         

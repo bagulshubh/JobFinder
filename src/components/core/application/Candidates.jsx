@@ -5,12 +5,13 @@ import NotFound from '../error/NotFound';
 import CandidateCard from '../../common/CandidateCard';
 import { BsCheckLg } from 'react-icons/bs';
 
-const Candidates = () => {
+const Candidates = (props) => {
 
   const {currApp} = useSelector((state)=>(state.application));
   const {userDetails} = useSelector((state)=>(state.profile));
   console.log(userDetails._id)
-  
+  const socket = props.socket;
+
   return (
     <div>
 
@@ -30,7 +31,7 @@ const Candidates = () => {
 
                         <div>
                           {
-                            userDetails._id === candidate ? (<div>Same</div>) : (<CandidateCard id={candidate}></CandidateCard>)
+                            userDetails._id === candidate ? (<div>Same</div>) : (<CandidateCard id={candidate} socket={socket}></CandidateCard>)
                           }
                         </div>
                        

@@ -30,7 +30,7 @@
   align-items: center;
 }
 .black-btn{
-  background-color: black;
+  background-color: #0074CC;
   color: white;
 }
 .white-btn{
@@ -63,7 +63,7 @@
   cursor: pointer;
 }
 .active{
-  color: rgb(244, 44, 44);
+  color: #0074CC;
 }
 .logo-con{
   all: unset;
@@ -99,7 +99,7 @@
 }
 .auth-btn{
   all: unset;
-  background-color: #000;
+  background-color: #0074CC;
   color: white;
   padding: 0.2rem 0.6rem;
   border-radius: 5px;
@@ -113,7 +113,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: #0074CC;
 }
 .profile-nav-active{
   color: rgb(244, 44, 44);
@@ -124,7 +124,7 @@
   justify-content: center;
   align-items: center;
   padding:3rem;
-
+  
 }
 .login-left-div{
   display: flex;
@@ -136,6 +136,7 @@
   gap: 2rem;
   width: 50%;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.277);;
 }
 .login-heading{
   font-size: 1.8rem;
@@ -172,6 +173,9 @@
   border-radius: 5px 7px 5px 7px;
   cursor: pointer;
 }
+.submit-btn:hover{
+  background-color: #0074CC;
+}
 .login-logo{
   position: absolute;
   width: 5%;
@@ -196,6 +200,7 @@
   gap: 2rem;
   width: 65%;
   align-items:center;
+  background-color: rgba(0, 0, 0, 0.277);;
 }
 .signup-name{
   display: flex;
@@ -275,6 +280,7 @@
   width: 5%;
   position: absolute; 
   top: 0rem;
+  color: #0074CC;
 }
 
 
@@ -307,7 +313,7 @@
   margin-bottom: 2rem;
 }
 .applicationcard{
-  background-color: rgb(250, 250, 253);
+  background-color: rgba(0, 0, 0, 0.277);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   width: 85%;
   padding: 2rem;
@@ -318,9 +324,11 @@
   cursor: pointer;
   transition-duration: 400ms;
   margin-bottom: 1rem;
+  border-radius: 5px;
 }
 .applicationcard:hover{
   transform: scale(1.008);
+  border-radius: 10px;
 }
 .app-main{
   width: 100%;
@@ -401,6 +409,7 @@
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.277);
 }
 
 .first-div{
@@ -477,8 +486,8 @@
 }
 .side-bar-con{
   position: absolute;
-  background: rgb(237,244,246);
-  background: linear-gradient(7deg, rgba(217,231,235,1) 29%, rgba(234,244,246,1) 55%, rgba(251,251,251,1) 90%);
+  background: rgb(0,0,0);
+  background: linear-gradient(to top, #202020, #1A1A1A);
   left: 0;
   padding: 2vw;
   padding-left: 4vw;
@@ -507,6 +516,7 @@
   background-color: rgb(244,244,246);
   padding: 0.5rem;
   border-radius: 7px;
+  color: black;
 }
 .activetag{
   background-color: #91c4e3;
@@ -602,7 +612,7 @@
 }
 .profile-wrapper{
   width: 100%;
-  background-color: rgb(245, 240, 240);
+  background-color: rgba(0, 0, 0, 0.277);
   padding: 2vw;
   border-radius: 2px;
 }
@@ -611,6 +621,7 @@
   flex-direction: column;
   width: 100%;
   gap: 2vh;
+  color: white;
 }
 .profile-name div{
   display: flex;
@@ -639,6 +650,7 @@
   gap: 2vw;
   align-items: flex-start;
   justify-content: flex-start;
+  color:black;
 }
 .message-left{
   width: 30%;
@@ -818,6 +830,7 @@ background: linear-gradient(243deg, rgba(242,247,249,1) 8%, rgba(189,224,245,1) 
   align-items: flex-start;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   margin-bottom: 2rem;
+  height: 50vh;
 }
 
 .goal {
