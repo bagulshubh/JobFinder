@@ -16,7 +16,7 @@ const ViewApplication = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const applicationId = currApp._id;
-    let userId  ;
+    let userId;
     if(userId!==null){
       userId = userDetails._id;
     }

@@ -1,11 +1,13 @@
 
+const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
+
 
 export const getCandidateInfo = (id,token,setdata)=>{
 
     return async(dispatch)=>{
 
         try{
-            const url = 'https://jobfinder-ik40.onrender.com//api/v1/profile/getUserDetails'
+            const url = `${BaseUrl}/profile/getUserDetails`
 
 
             const res = await fetch (url,

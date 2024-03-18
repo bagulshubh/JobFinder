@@ -19,6 +19,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [submitFlag,setsubmitFlag] = useState(false);
+    const [loading,setloading] = useState(false);
 
     const {fname,lname,email,password,confirmpassword,otp} = user;
 
@@ -33,25 +34,39 @@ const Signup = () => {
 
     
     const  subminHandler = async()=>{
-        
-        sendotp(user.email);
+       
+        dispatch(sendotp(user.email,setloading,navigate));
         setsubmitFlag(true);
-
+       
     }
 
     const singupHandler = async()=>{
-        dispatch(signup(user,navigate));
+        dispatch(signup(user,navigate,setloading));
+    }
+
+    const keyHandler = (event)=>{
+        if(event.key === "Enter"){
+            subminHandler();
+        }
+    }
+
+    const keyHandler2 = (event)=>{
+        if(event.key === "Enter"){
+            singupHandler();
+        }
     }
 
     return (
     <div className='signup-wrapper'>
       
         {
+            loading ? <div className='lds-dual-ring'></div> :
+
             submitFlag ? (
                 <div className='otp-con'>
 
                     <label>Enter OTP</label>
-                    <input type='text' placeholder='otp' name='otp' value={otp} onChange={changeHandler}></input>
+                    <input type='text' placeholder='otp' name='otp' value={otp} onChange={changeHandler} onKeyDown={keyHandler2} ></input>
 
                     <button onClick={singupHandler} className='submit-btn'>Submit</button>
 
@@ -80,13 +95,13 @@ const Signup = () => {
                         <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
 
                         <label>Confirm Password</label>
-                        <input type='password' placeholder='Confirm Password' onChange={changeHandler} name='confirmpassword' value={confirmpassword}></input>
+                        <input type='password' placeholder='Confirm Password' onChange={changeHandler} name='confirmpassword' value={confirmpassword} onKeyDown={keyHandler}></input>
                     </div>
 
                     <div className='radio-con'>
                         <div>
                             <input type='radio' id='Seeker' name
-                            ='role' onClick={changeHandler}  value="Seeker"></input>
+                            ='role' onClick={changeHandler}  value="Seeker" defaultChecked></input>
                             <label for='Seeker'>Seeker</label>
                         </div>
                         

@@ -1,9 +1,11 @@
-const BaseUrl = "https://jobfinder-ik40.onrender.com/api/v1"
+const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
 import toast from "react-hot-toast";
+import { increaseAccepted } from "./count";
+
 
 export const createSocket = (senderId,reciverId,navigate)=>{
 
-    return async()=>{
+    return async(dispatch)=>{
 
         try{
 
@@ -28,6 +30,7 @@ export const createSocket = (senderId,reciverId,navigate)=>{
 
             if(output.success === "True"){
                 toast.success("Candidate Accepted");
+                dispatch(increaseAccepted(navigate));
                 navigate("/");
             }
             else{
@@ -72,7 +75,7 @@ export const sendMessage = (senderId,chatId,body,navigate)=>{
             if(output.success==="True"){
                 toast.success("Sent");
                 navigate("/")
-                window.location.reload(false);
+                //window.location.reload(false);
                 
             }
             else{

@@ -1,16 +1,27 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import NotFound from './NotFound';
+import { useNavigate } from 'react-router-dom';
 
 const CommonError = () => {
 
-  const error  = useSelector( (state)=> (state.error) );
-
+  const {errorMessage}  = useSelector( (state)=> (state.error) );
+  const navigate = useNavigate();
   return (
     <div className='common-error'>
     <div> 
       {
-          error === null ? (<div><NotFound></NotFound></div>) : (<div>{error}</div>)
+          errorMessage === null ? (<div><NotFound></NotFound></div>) : (
+          
+            <div className="error-con">
+              <div className='oops'>Oops!</div>
+              <div className='error-message'>{errorMessage}</div>
+              <div className='submit-btn' onClick={()=>{
+                navigate("/")
+              }}>GO TO HOMEPAGE</div>
+            </div>
+            
+          )
         }
     </div>
       

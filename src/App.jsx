@@ -5,9 +5,9 @@ import Navbar from './components/common/Navbar';
 import LogIn from './components/core/auth/LogIn';
 import Signup from './components/core/auth/Signup';
 import Profile from './components/core/pages/Profile';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails } from './services/profile';
-import { useEffect } from 'react';
+import { useEffect , useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Discover from './components/core/pages/Discover';
 import Listing from './components/core/pages/Listing';
@@ -23,19 +23,29 @@ import Saved from './components/core/pages/Saved';
 import DeleteProfile from './components/core/profile/DeleteProfile';
 import UpdateProfile from './components/core/profile/UpdateProfile';
 import Message from './components/core/message/Message';
-
+import CommonError from './components/core/error/CommonError';
+import Notification from './components/core/pages/Notification';
+import {io} from 'socket.io-client'
 
 function App() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  useEffect(() => {
+  const {userDetails} = useSelector((state)=>(state.profile))
+  const socket = useRef();
+
+  useEffect(async() => {
    
-    if (localStorage.getItem("token") !== undefined) {
+    if (localStorage.getItem("token") !== undefined ||  localStorage.getItem("token") !== null ) {
       const token = JSON.parse(localStorage.getItem("token"))
       console.log(token);
-      dispatch(getUserDetails(token, navigate))
+      const user = await dispatch(getUserDetails(token, navigate))
+      // here we can start a  connection
+      //connectToSocket();
+      socket.current = io("http://localhost:5000");
+      socket.current.emit("add-user", user._id);
     }
+    console.log(socket)
     
   }, [])
 
@@ -65,7 +75,7 @@ function App() {
 
         <Route path='/viewApplication' element={<ViewApplication></ViewApplication>}></Route>
 
-        <Route path='/candidates' element={<Candidates></Candidates>}></Route>
+        <Route path='/candidates' element={<Candidates socket={socket}></Candidates>}></Route>
 
         <Route path='/update' element={<UpdateApp></UpdateApp>}></Route>
         
@@ -80,6 +90,10 @@ function App() {
         <Route path='/updateProfile' element={<UpdateProfile></UpdateProfile>} ></Route>
 
         <Route path='/messages' element={<Message></Message>}></Route>
+
+        <Route path='/error' element={<CommonError></CommonError>}></Route>
+
+        <Route path='/notification' element={<Notification socket={socket}></Notification>}></Route>
 
       </Routes>
       

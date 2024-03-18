@@ -1,12 +1,13 @@
 import { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
+import {increaseJob,decreaseJob} from './count'
 
+const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
 
-const BaseUrl = "https://jobfinder-ik40.onrender.com/api/v1"
 
 export const createApplication = (data,navigate,token)=>{
 
-    return async()=>{
+    return async(dispatch)=>{
 
             const toastId = toast.loading("Creating");
             
@@ -25,6 +26,12 @@ export const createApplication = (data,navigate,token)=>{
             )
             console.log("till here")
             const output = await res.json();
+
+            if(output.success === "True" || output.success === "true" || output.success === true){
+                //have to call count 
+                dispatch(increaseJob(navigate));
+            }
+
             console.log(output);
             console.log("here also")
             toast.dismiss(toastId);
@@ -36,12 +43,12 @@ export const createApplication = (data,navigate,token)=>{
 }
 
 
-export const getallApplications = (token)=>{
+export const getallApplications = (token,setloading)=>{
 
     return async(dispatch)=>{
         
         try{
-            const toastId = toast.loading("Fetching");
+            setloading(true);
             const url = `${BaseUrl}/application/getAllApplications`;
 
             const res = await fetch (url,
@@ -59,7 +66,7 @@ export const getallApplications = (token)=>{
             const output = await res.json();
             console.log(output);
             dispatch(setAppilication(output.body));
-            toast.dismiss(toastId);
+            setloading(false);
         }
         catch(err){
             console.log(err.message);
@@ -303,7 +310,7 @@ export const unsave = (applicationId, userId,token,navigate)=>{
 
 //need some changes in backend to handle delete of foreing keys
 export const deleteApp = (applicationId,token,navigate)=>{
-    return async()=>{
+    return async(dispatch)=>{
 
         try{
 
@@ -324,7 +331,7 @@ export const deleteApp = (applicationId,token,navigate)=>{
             )
             const output = await res.json();
             console.log(output)
-
+            dispatch(decreaseJob(navigate));
             navigate('/');
             toast.success("Application Deleted")
             window.location.reload(false);

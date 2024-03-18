@@ -9,7 +9,7 @@ import loginlogo from '../../../assets/login-logo.png'
 const LogIn = () => {
 
   const dispatch = useDispatch();
-
+  const [loading,setloading] = useState(false);
 
   const [user,setUser] = useState({
     email:"",
@@ -28,11 +28,21 @@ const LogIn = () => {
   }
 
   const submitHandler = async()=>{
-    dispatch(login(user,navigate));
+    dispatch(login(user,navigate,setloading));
+  }
+
+  const keyHandler = (event)=>{
+    if(event.key === 'Enter'){
+      submitHandler();
+    }
   }
 
   return (
     <div className='login-con'>
+
+      {
+        loading ? <div className='lds-dual-ring'></div> 
+        :
 
       <div className='login-left-div'>
 
@@ -47,12 +57,12 @@ const LogIn = () => {
           
           <div className='login-email'>
             <label>Password</label>
-            <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password}></input>
+            <input type='password' placeholder='Password' onChange={changeHandler} name='password' value={password} onKeyDown={keyHandler}></input>
           </div>
 
           <button onClick={submitHandler} className='submit-btn'>Submit</button>
       </div>
-
+      }
     </div>
   )
 }

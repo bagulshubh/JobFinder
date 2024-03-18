@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const CandidateCard = (props) => {
     const id = props.id;
     const dispatch = useDispatch();
+    const socket = props.socket;
 
     const {token} = useSelector((state)=>(state.auth))
     const [data,setdata] = useState("");
@@ -19,6 +20,14 @@ const CandidateCard = (props) => {
 
     const acceptHandler = ()=>{
       dispatch(createSocket(userDetails._id,id,navigate));
+      //here we need  to share the notification to the accepetd candidate that he is  accepted
+      const msg = "Congrates You are Selected"
+      socket.current.emit("send-notification", {
+        to: data._id,
+        from: userDetails._id,
+        msg,
+      });
+      console.log("Notification is  sended",msg);
     }
     
 
