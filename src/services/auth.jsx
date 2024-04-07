@@ -5,7 +5,7 @@ import { increaseCandidate } from "./count"
 import toast from "react-hot-toast"
 import { setError } from "../slices/error"
 
-const BaseUrl = "http://localhost:5000/api/v1" // || "https://jobfinder-ik40.onrender.com/api/v1"
+const BaseUrl = "https://jobfinder-ik40.onrender.com/api/v1"
 
 
 export const sendotp = (email, setloading, navigate) => {
