@@ -81,6 +81,20 @@ const Home = () => {
 
         <Goals></Goals>
 
+        <div className='register-wrapper'>
+          {
+            userDetails === null || Object.keys(userDetails).length === 0 ? 
+            <div className='no-register-con'>
+              <p>Unlock new job opportunities and make a lasting impression by creating a complete and compelling profile today.</p>
+              <div className='black-btn home-btn' onClick={()=>{navigate("/signup")}}>SignUp</div>
+            </div> : 
+            <div className='no-register-con'>
+              <p>Fill Details to Improve Your Chances and StandOut from the crowd</p>
+              <div className='black-btn home-btn' onClick={()=>{navigate("/updateProfile")}}>Update</div>
+            </div>
+          }
+        </div>
+
    
 
     </div>

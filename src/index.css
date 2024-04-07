@@ -22,3 +22,30 @@
   background-color: #1A1A1A;
   color: #fff;
 }
+/* Style the scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #2b2b2b;
+  border-radius: 5px;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #4c4c4c;
+  border-radius: 5px;
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666;
+}
+
+/* Style the scrollbar corner */
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
