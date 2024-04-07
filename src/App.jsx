@@ -42,8 +42,8 @@ function App() {
       const user = await dispatch(getUserDetails(token, navigate))
       // here we can start a  connection
       //connectToSocket();
-      socket.current = io("http://localhost:5000");
-      socket.current.emit("add-user", user._id);
+      // socket.current = io("http://localhost:5000");
+      // socket.current.emit("add-user", user._id);
     }
     console.log(socket)
     

@@ -2,7 +2,7 @@ import { setAppilication , setCurrApp } from "../slices/applicationSlice";
 import toast from "react-hot-toast";
 import {increaseJob,decreaseJob} from './count'
 
-const BaseUrl =  "http://localhost:5000/api/v1" //|| "https://jobfinder-ik40.onrender.com/api/v1"
+const BaseUrl =   "https://jobfinder-ik40.onrender.com/api/v1"
 
 
 export const createApplication = (data,navigate,token)=>{

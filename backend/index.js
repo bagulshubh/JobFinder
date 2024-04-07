@@ -23,7 +23,7 @@ database.connect();
 const server = http.createServer(app);
 const io = socket(server, {
 	cors: {
-	  origin: "http://localhost:5173",
+	  origin: "https://jobfindeer.netlify.app",
 	  credentials: true,
 	},
   });
@@ -57,7 +57,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin:"http://localhost:5173",
+        origin:"*",
  		credentials:true,
     })
 )
@@ -78,6 +78,7 @@ app.use("/api/v1/application", applicationRoutes);
 app.use('/api/v1/tag',tagRoutes);
 app.use('/api/v1/chat',chatRoutes);
 app.use("/api/v1/count",countRoutes);
+
 
 app.get("/", (req, res) => {
 	return res.json({

@@ -15,6 +15,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "concurrently": "^8.2.1",
     "express-session": "^1.17.3",
+    "firebase": "^10.8.1",
     "framer-motion": "^10.16.16",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^2.2.16",
