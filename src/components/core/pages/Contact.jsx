@@ -6,8 +6,8 @@ const Contact = () => {
       
         <div>
 
-            <div>Website Made by Shubham Bagul</div>
-            <div>Email:- shubhambagul51000@gmail.com</div>
+            <div>Website Made by Tejas Patil</div>
+            <div>Email:- tejaspatil7709@gmail.com</div>
             <div>SITS,Narhe</div>    
             
         </div>
